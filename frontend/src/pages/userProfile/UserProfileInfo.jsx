@@ -8,12 +8,12 @@ const UserProfileInfo = () => {
   const { data: user, isLoading } = useGetUserQuery();
 
   const navigate = useNavigate();
-  
-    useEffect(() => {
-      if (!user) {
-        navigate("/login");
-      }
-    }, [user, navigate]);
+
+  useEffect(() => {
+    if (!isLoading && !user) {
+      navigate("/login");
+    }
+  }, [user, isLoading, navigate]); 
 
   if (isLoading) {
     return (
