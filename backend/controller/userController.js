@@ -30,7 +30,7 @@ export const registerUser = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Internal server error",
-      error: error.message || error, 
+      error: error.message || error,
     });
   }
 };
@@ -88,6 +88,28 @@ export const getUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Update user
+export const updateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId, "-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.authorBio) user.authorBio = req.body.authorBio;
+    if (typeof req.body.isAuthor === "boolean")
+      user.isAuthor = req.body.isAuthor;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
