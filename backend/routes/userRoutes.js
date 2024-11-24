@@ -4,6 +4,7 @@ import {
   loginUser,
   logout,
   registerUser,
+  updateUser,
 } from "../controller/userController.js";
 import protectAuth from "../middleware/protectAuth.js";
 
@@ -16,5 +17,6 @@ router.post("/login", loginUser);
 router.post("/logout", logout);
 
 router.get("/", protectAuth, getUser);
+router.put("/", protectAuth, updateUser);
 
 export default router;
