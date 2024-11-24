@@ -5,8 +5,8 @@ const Logo = () => {
   return (
     <li>
       <Link to="/" className="flex items-center gap-1 cursor-pointer">
-        <FaBookOpenReader className="text-[1.5rem]" />
-        <h6 className="font-bold text-[.9rem]">Store</h6>
+        <FaBookOpenReader className="text-[1.5rem] dark:text-white" />
+        <h6 className="font-bold text-[.9rem] dark:text-white">Store</h6>
       </Link>
     </li>
   );
