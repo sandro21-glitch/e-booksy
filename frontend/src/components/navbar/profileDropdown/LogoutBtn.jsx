@@ -23,7 +23,7 @@ const LogoutBtn = () => {
   return (
     <li
       onClick={handleLogout}
-      className="hover:bg-lightPink hover:text-primaryPink overflow-hidden transition-colors rounded-md"
+      className="hover:bg-lightPink hover:text-primaryPink dark:text-white dark:hover:text-primaryPink overflow-hidden transition-colors rounded-md"
     >
       <p>{isLoading ? "Logging out..." : "Logout"}</p>
     </li>
