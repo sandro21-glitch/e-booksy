@@ -13,6 +13,7 @@ export default {
         lightPink: "#fde",
         darkYellow: "#F5A525",
         darkBrown: "#231E1A",
+        shadeGray: "#18181B",
       },
     },
   },
