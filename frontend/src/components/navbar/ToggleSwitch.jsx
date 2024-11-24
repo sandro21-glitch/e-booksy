@@ -1,14 +1,23 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../../features/themeSlice";
 
 const ToggleSwitch = () => {
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.theme);
+
+  const handleToggle = () => {
+    dispatch(toggleTheme());
+  };
   return (
     <li>
       <form className="flex items-center">
         <label className="grid cursor-pointer place-items-center">
           <input
             type="checkbox"
-            value="synthwave"
+            checked={theme === "dark"} 
             className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+            onChange={handleToggle} 
           />
           <svg
             className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
