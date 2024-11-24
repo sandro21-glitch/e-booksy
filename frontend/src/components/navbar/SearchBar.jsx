@@ -8,7 +8,8 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Seacrh your book..."
-          className="w-full border-2 rounded-xl p-2 text-[.8rem] border-lightGray hover:border-mediumGray active:border-darkGray"
+          className="w-full border-2 rounded-xl p-2 text-[.8rem] border-lightGray hover:border-mediumGray active:border-darkGray 
+           outline-none dark:bg-slate-900 dark:border-darkGray dark:text-white"
         />
         <button
           type="submit"
