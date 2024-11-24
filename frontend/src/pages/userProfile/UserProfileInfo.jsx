@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { useGetUserQuery } from "../../api/apiUser";
 import Loader from "../../components/Loader";
@@ -8,6 +8,12 @@ const UserProfileInfo = () => {
   const { data: user, isLoading } = useGetUserQuery();
 
   const navigate = useNavigate();
+  
+    useEffect(() => {
+      if (!user) {
+        navigate("/login");
+      }
+    }, [user, navigate]);
 
   if (isLoading) {
     return (
@@ -17,19 +23,19 @@ const UserProfileInfo = () => {
     );
   }
 
-  if (!user) {
-    return navigate("/login");
-  }
-
   const { name, email, isAuthor } = user;
 
   return (
     <div className="flex justify-center gap-5 items-center min-w-[25rem] mt-10">
       <div className="w-20 h-20 bg-mediumGray dark:bg-darkGray rounded-md flex items-center justify-center">
-        <p className="text-[.7rem] capitalize dark:text-white">{name.slice(0, 3)}</p>
+        <p className="text-[.7rem] capitalize dark:text-white">
+          {name.slice(0, 3)}
+        </p>
       </div>
       <div className="flex flex-col gap-[1px]">
-        <p className="text-[1rem] font-bold capitalize dark:text-white">{name}</p>
+        <p className="text-[1rem] font-bold capitalize dark:text-white">
+          {name}
+        </p>
         <p className="text-[.9rem] dark:text-white">{email}</p>
         <div className="flex items-center gap-5">
           <p className="text-[.9rem] capitalize dark:text-white">
