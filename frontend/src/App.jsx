@@ -6,8 +6,10 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ProfilePage from "./pages/userProfile/ProfilePage";
 import { useEffect } from "react";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
 
 const App = () => {
+  const user = useSelector((state) => state.auth.userInfo);
   const theme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     const root = window.document.documentElement;
@@ -19,8 +21,8 @@ const App = () => {
       body.classList.remove("bg-white");
     } else {
       root.classList.remove("dark");
-      body.classList.add("bg-white"); 
-      body.classList.remove("bg-gray-900"); 
+      body.classList.add("bg-white");
+      body.classList.remove("bg-gray-900");
     }
   }, [theme]);
 
@@ -30,8 +32,22 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <AuthenticatedRoute>
+              <Login />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthenticatedRoute>
+              <Register />
+            </AuthenticatedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
