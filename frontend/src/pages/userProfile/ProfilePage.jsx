@@ -5,6 +5,7 @@ const ProfilePage = () => {
   return (
     <section className="section-center section-x">
       <UserProfileInfo />
+      <hr />
     </section>
   );
 };

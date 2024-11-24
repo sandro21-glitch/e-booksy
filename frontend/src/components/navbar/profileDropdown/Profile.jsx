@@ -20,26 +20,26 @@ const Profile = () => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        className="dropdown-content menu bg-base-100 dark:bg-shadeGray rounded-box z-[1] w-52 p-2 shadow"
       >
         <li>
-          <p className="font-semibold">
+          <p className="font-semibold dark:text-white">
             Signed in as <br /> {email}
           </p>
         </li>
         <li>
-          <p>My Library</p>
+          <p className="dark:text-white">My Library</p>
         </li>
         <li>
-          <p>My Orders</p>
-        </li>
-        <hr />
-        <li>
-          <p>Create New Book</p>
+          <p className="dark:text-white">My Orders</p>
         </li>
         <hr />
         <li>
-          <Link to={"/profile"} className="block">
+          <p className="dark:text-white">Create New Book</p>
+        </li>
+        <hr />
+        <li>
+          <Link to={"/profile"} className="block dark:text-white">
             Profile
           </Link>
         </li>

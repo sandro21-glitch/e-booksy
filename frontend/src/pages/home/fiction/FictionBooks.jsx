@@ -5,6 +5,8 @@ const FictionBooks = () => {
   return (
     <>
       <BookBoxes />
+      <BookBoxes />
+      <BookBoxes />
     </>
   );
 };
