@@ -37,8 +37,8 @@ const items = [
 const BookBoxes = () => {
   return (
     <div className="mt-10">
-      <header className="border-b border-b-black w-full mb-5">
-        <h3 className="bg-black text-white font-semibold w-fit text-[.9rem] px-1 py-2 rounded-t-md">
+      <header className="border-b border-b-black dark:border-b-white w-full mb-5">
+        <h3 className="bg-black dark:bg-white text-white dark:text-black font-semibold w-fit text-[.9rem] px-1 py-2 rounded-t-md">
           Fiction
         </h3>
       </header>
@@ -55,17 +55,17 @@ const BookBoxes = () => {
                 />
               </div>
               <div className="text-start w-full">
-                <h3 className="text-[1rem] font-bold tracking-wide mb-2">
+                <h3 className="text-[1rem] font-bold dark:text-white tracking-wide mb-2">
                   {item.title}
                 </h3>
                 <p className="w-fit text-[.7rem] text-white bg-primaryPink px-1 py-[.2rem] rounded-md mb-2">
                   24% Off
                 </p>
                 <div className="flex items-center gap-1 mb-2">
-                  <p className="font-bold text-black text-[.9rem]">
+                  <p className="font-bold text-black dark:text-white text-[.9rem]">
                     {item.price}$
                   </p>
-                  <p className="text-[.9rem] text-black line-through">18.00$</p>
+                  <p className="text-[.9rem] text-black dark:text-white line-through">18.00$</p>
                 </div>
                 <div className="w-fit text-[.8rem] text-black bg-darkYellow px-1 py-[.2rem] rounded-md flex items-center gap-1">
                   <p>4.5</p>
