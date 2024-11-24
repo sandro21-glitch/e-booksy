@@ -13,7 +13,7 @@ const SearchBar = () => {
         />
         <button
           type="submit"
-          className="absolute right-4 top-1/2 translate-y-[-50%] bg-none"
+          className="absolute right-4 top-1/2 translate-y-[-50%] bg-none dark:text-white"
         >
           <FaSearch />
         </button>
