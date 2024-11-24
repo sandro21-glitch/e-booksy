@@ -46,7 +46,7 @@ const HeroSlider = () => {
   return (
     <Slider
       {...settings}
-      className="bg-heroBg px-8 py-5 flex items-center justify-center rounded-xl"
+      className="bg-heroBg dark:bg-darkBrown px-8 py-5 flex items-center justify-center rounded-xl"
     >
       {sliderItems.map((item) => {
         const { desc, id, img, title } = item;
@@ -55,10 +55,10 @@ const HeroSlider = () => {
             <div className="h-[24rem] w-full flex items-center justify-center">
               <div className="flex items-center justify-center">
                 <div className="w-1/2 flex flex-col items-start gap-5">
-                  <h1 className="text-[3rem] leading-[3rem] tracking-wide text-wrap  whitespace-break-spaces">
+                  <h1 className="text-[3rem] dark:text-white leading-[3rem] tracking-wide text-wrap  whitespace-break-spaces">
                     {title}
                   </h1>
-                  <p>{desc}</p>
+                  <p className="text-[.9rem] dark:text-white">{desc}</p>
                   <button className="group border-2 border-primaryPink px-4 py-2 rounded-md flex items-center gap-1 text-primaryPink text-[.8rem]">
                     Learn More
                     <FaLongArrowAltRight className="group-hover:translate-x-1 transition-transform ease-in duration-200" />
