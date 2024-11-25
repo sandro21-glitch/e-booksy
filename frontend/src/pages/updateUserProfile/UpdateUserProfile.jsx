@@ -32,7 +32,7 @@ const UpdateUserProfile = () => {
           <FaUserCircle className="w-full h-full" />
         </div>
         <form className="w-full" onSubmit={updateUserName}>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full">
             <div className="label">
               <span className="label-text dark:text-white text-[.8rem]">
                 Full Name
@@ -41,7 +41,7 @@ const UpdateUserProfile = () => {
             <input
               type="text"
               placeholder="Type here"
-              className="input input-bordered w-full max-w-xs text-[.8rem]"
+              className="input input-bordered w-full text-[.8rem]"
               value={newName === "" ? user.name : newName}
               onChange={(e) => setNewName(e.target.value)}
             />
