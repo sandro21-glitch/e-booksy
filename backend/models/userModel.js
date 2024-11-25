@@ -27,8 +27,23 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
     authorBio: {
-      type: String,
-      default: null,
+      bio: {
+        type: String,
+        default: null,
+      },
+      links: [
+        {
+          label: {
+            type: String,
+            required: false,
+          },
+          url: {
+            type: String,
+            required: false,
+            match: /^https?:\/\/(www\.)?[\w\-]+\.[a-z]{2,6}(\/[\w\-]*)*\/?$/i,
+          },
+        },
+      ],
     },
     avatar: {
       type: String,
