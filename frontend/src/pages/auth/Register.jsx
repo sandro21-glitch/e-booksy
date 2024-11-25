@@ -4,7 +4,7 @@ import RegisterForm from "./RegisterForm";
 
 const Register = () => {
   return (
-    <div className="flex items-center justify-center min-h-[80vh]">
+    <div className="flex items-center justify-center min-h-screen overflow-hidden">
       <div className="border-2 border-mediumGray rounded-md p-5 w-[24rem] flex justify-center items-center flex-col">
         <div className="my-10">
           <SlBookOpen size={90} className="dark:text-white" />
