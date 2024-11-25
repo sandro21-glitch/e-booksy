@@ -8,6 +8,7 @@ import ProfilePage from "./pages/userProfile/ProfilePage";
 import { useEffect } from "react";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
+import UpdateUserProfile from "./pages/updateUserProfile/UpdateUserProfile";
 
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
@@ -36,6 +37,14 @@ const App = () => {
           element={
             <AuthenticatedRoute>
               <ProfilePage />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/update-profile"
+          element={
+            <AuthenticatedRoute>
+              <UpdateUserProfile />
             </AuthenticatedRoute>
           }
         />
