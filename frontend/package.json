@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "@tiptap/pm": "^2.10.2",
+    "@tiptap/react": "^2.10.2",
+    "@tiptap/starter-kit": "^2.10.2",
     "daisyui": "^4.12.14",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
