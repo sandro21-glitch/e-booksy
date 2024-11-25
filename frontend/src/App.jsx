@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 
 const App = () => {
-  const user = useSelector((state) => state.auth.userInfo);
   const theme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     const root = window.document.documentElement;
