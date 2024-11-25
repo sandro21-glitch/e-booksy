@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import authorRoutes from "./routes/authorRoutes.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(cookieParser());
 //ROUTES
 app.use("/api/books", bookRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/author", authorRoutes);
 
 //SERVER
 app.listen(PORT, () => {
