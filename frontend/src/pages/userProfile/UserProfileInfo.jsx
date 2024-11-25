@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { useGetUserQuery, useUpdateUserMutation } from "../../api/apiUser";
 import Loader from "../../components/Loader";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserRoleCard from "./UserRoleCard";
 
 const UserProfileInfo = () => {
@@ -34,9 +34,12 @@ const UserProfileInfo = () => {
         </p>
       </div>
       <UserRoleCard email={email} isAuthor={isAuthor} name={name} />
-      <div className="w-10 h-10 cursor-pointer bg-lightGray dark:bg-gray-700 dark:text-white hover:bg-mediumGray transition-colors flex items-center justify-center rounded-md">
+      <Link
+        to={"/update-profile"}
+        className="w-10 h-10 cursor-pointer bg-lightGray dark:bg-gray-700 dark:text-white hover:bg-mediumGray transition-colors flex items-center justify-center rounded-md"
+      >
         <FaRegEdit className="text-[1.2rem]" />
-      </div>
+      </Link>
     </div>
   );
 };
