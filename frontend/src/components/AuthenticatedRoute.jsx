@@ -4,16 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 const AuthenticatedRoute = ({ children }) => {
   const user = useSelector((state) => state.auth.userInfo);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
-      navigate("/");
+      navigate("/login"); 
     }
   }, [user, navigate]);
 
-  return children;
+  if (!user) {
+    return null; 
+  }
+
+  return children; 
 };
 
 export default AuthenticatedRoute;
