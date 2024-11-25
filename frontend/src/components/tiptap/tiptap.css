@@ -1,0 +1,21 @@
+
+.tiptap {
+  width: 100%;
+  outline: none;
+}
+
+
+.tiptap ul {
+  list-style-type: disc !important;
+  padding-left: 20px !important;
+}
+
+.tiptap ol {
+  list-style-type: decimal !important;
+  padding-left: 20px !important; 
+}
+
+
+.tiptap li {
+  margin-bottom: 5px;
+}
