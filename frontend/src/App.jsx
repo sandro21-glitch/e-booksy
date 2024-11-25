@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
 import UpdateUserProfile from "./pages/updateUserProfile/UpdateUserProfile";
+import UpdateAuthorBio from "./pages/updateAuthorBio/UpdateAuthorBio";
 
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
@@ -45,6 +46,14 @@ const App = () => {
           element={
             <AuthenticatedRoute>
               <UpdateUserProfile />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/update-author"
+          element={
+            <AuthenticatedRoute>
+              <UpdateAuthorBio />
             </AuthenticatedRoute>
           }
         />
