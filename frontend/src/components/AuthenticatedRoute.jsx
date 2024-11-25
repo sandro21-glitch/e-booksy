@@ -8,14 +8,10 @@ const AuthenticatedRoute = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    if (!user) {
       navigate("/");
     }
   }, [user, navigate]);
-
-  if (user) {
-    return null;
-  }
 
   return children;
 };
