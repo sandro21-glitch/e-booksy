@@ -7,6 +7,7 @@ import Register from "./pages/auth/Register";
 import ProfilePage from "./pages/userProfile/ProfilePage";
 import { useEffect } from "react";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
 
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
@@ -41,17 +42,17 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <AuthenticatedRoute>
+            <UnAuthenticatedRoute>
               <Login />
-            </AuthenticatedRoute>
+            </UnAuthenticatedRoute>
           }
         />
         <Route
           path="/register"
           element={
-            <AuthenticatedRoute>
+            <UnAuthenticatedRoute>
               <Register />
-            </AuthenticatedRoute>
+            </UnAuthenticatedRoute>
           }
         />
       </Routes>
