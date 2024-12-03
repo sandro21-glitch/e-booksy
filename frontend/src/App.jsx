@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
@@ -10,13 +10,17 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
 import UpdateUserProfile from "./pages/updateUserProfile/UpdateUserProfile";
 import UpdateAuthorBio from "./pages/updateAuthorBio/UpdateAuthorBio";
+import { useJwt } from "react-jwt";
+import { useLogoutUserMutation } from "./api/apiAuth";
 
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
+  
   useEffect(() => {
     const root = window.document.documentElement;
     const body = window.document.body;
 
+    // Apply theme based on state
     if (theme === "dark") {
       root.classList.add("dark");
       body.classList.add("bg-gray-900");
@@ -29,7 +33,7 @@ const App = () => {
   }, [theme]);
 
   return (
-    <Router v7_startTransition>
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
