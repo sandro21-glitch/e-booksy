@@ -7,7 +7,7 @@ import { useLoginUserMutation } from "../../api/apiAuth";
 import { setCredentials } from "../../features/auth/authSlice";
 import MiniLoader from "../../components/MiniLoader";
 const LoginForm = () => {
-  const [email, setEmail] = useState("sandro11@mail.ru");
+  const [email, setEmail] = useState("vipsandro11@gmail.com");
   const [password, setPassword] = useState("123456");
   const [error, setError] = useState("");
   const [loginUser, { isLoading }] = useLoginUserMutation();
