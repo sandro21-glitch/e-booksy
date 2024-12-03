@@ -9,10 +9,27 @@ export const getAllBook = async (req, res) => {
   }
 };
 
+// get single book
+export const getSingleBook = async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).send("Book id is required");
+  }
+
+  try {
+    const book = await Book.findById({ _id: id });
+    res.status(200).send(book);
+  } catch (error) {
+    res.status(500).send("Internal server error");
+  }
+};
+
 //add new book
 export const addNewBook = async (req, res) => {
   const { title, author, genre, price, description, image } = req.body;
-
+  if (req.user.userId) {
+    res.status(404).send("user not found");
+  }
   if (!title || !author || !genre || !price || !description || !image) {
     return res.status(400).send("All fields are required");
   }
@@ -30,7 +47,7 @@ export const addNewBook = async (req, res) => {
 
     res.status(201).send({ message: "Book added successfully", book });
   } catch (error) {
-    res.status(500).send("Internal server error");
+    res.status(500).send("Internal server error", error.message);
   }
 };
 
@@ -61,7 +78,6 @@ export const updateBook = async (req, res) => {
     return res.status(400).send("Book id is required");
   }
   try {
-    
     const book = await Book.findById(id);
     if (!book) {
       return res.status(404).send("Book not found");
@@ -74,8 +90,7 @@ export const updateBook = async (req, res) => {
     book.image = image;
     await book.save();
     res.status(200).send({ message: "Book updated successfully", book });
-
   } catch (error) {
-    res.status(500).send("Internal server error");  
+    res.status(500).send("Internal server error");
   }
 };
