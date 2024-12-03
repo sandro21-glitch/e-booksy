@@ -17,9 +17,21 @@ const apiUser = apiSlice.injectEndpoints({
         credentials: "include",
       }),
     }),
+    updateAuthorBio: builder.mutation({
+      query: (data) => ({
+        url: "/author",
+        method: "PATCH",
+        body: data,
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
-export const { useGetUserQuery, useUpdateUserMutation } = apiUser;
+export const {
+  useGetUserQuery,
+  useUpdateUserMutation,
+  useUpdateAuthorBioMutation,
+} = apiUser;
 
 export default apiUser;
