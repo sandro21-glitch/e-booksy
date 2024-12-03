@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
-import { useGetUserQuery, useUpdateUserMutation } from "../../api/apiUser";
+import { useGetUserQuery } from "../../api/apiUser";
 import Loader from "../../components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import UserRoleCard from "./UserRoleCard";
 
 const UserProfileInfo = () => {
-  const { data: user, isLoading } = useGetUserQuery();
-
+  const { data: user, isLoading, error } = useGetUserQuery();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading && !user) {
+    // Redirect to login if there's no user or an error occurs
+    if (!isLoading && (!user || error)) {
       navigate("/login");
     }
-  }, [user, isLoading, navigate]);
+  }, [user, isLoading, error, navigate]);
 
   if (isLoading) {
     return (
@@ -24,7 +24,13 @@ const UserProfileInfo = () => {
     );
   }
 
-  const { name, email, isAuthor } = user;
+  if (error) {
+    console.error("Error fetching user:", error);
+    return <div>Error fetching user data</div>;
+  }
+
+  // Make sure the user object is defined before destructuring
+  const { name = "Guest", email = "", isAuthor = false } = user || {};
 
   return (
     <div className="flex justify-center gap-5 items-center min-w-[25rem] mt-10">
