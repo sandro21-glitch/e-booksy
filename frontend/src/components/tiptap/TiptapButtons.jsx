@@ -9,8 +9,10 @@ const TiptapButtons = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBold().run()}
         style={{ padding: "5px 10px", fontWeight: "bold" }}
         className={`${
-          editor.isActive("bold") ? "bg-black text-white" : ""
-        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem]`}
+          editor.isActive("bold")
+            ? "bg-black dark:bg-white text-white dark:text-black "
+            : "dark:text-white"
+        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem] `}
       >
         <FaBold />
       </button>
@@ -18,8 +20,10 @@ const TiptapButtons = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleItalic().run()}
         style={{ padding: "5px 10px", fontStyle: "italic" }}
         className={`${
-          editor.isActive("italic") ? "bg-black text-white" : ""
-        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem]`}
+          editor.isActive("italic")
+            ? "bg-black dark:bg-white text-white dark:text-black "
+            : "dark:text-white"
+        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem] `}
       >
         <FaItalic />
       </button>
@@ -27,8 +31,10 @@ const TiptapButtons = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         style={{ padding: "5px 10px" }}
         className={`${
-          editor.isActive("bulletList") ? "bg-black text-white" : ""
-        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem]`}
+          editor.isActive("bulletList")
+            ? "bg-black dark:bg-white text-white dark:text-black "
+            : "dark:text-white"
+        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem] `}
       >
         <MdFormatListBulleted />
       </button>
@@ -36,8 +42,10 @@ const TiptapButtons = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         style={{ padding: "5px 10px" }}
         className={`${
-          editor.isActive("orderedList") ? "bg-black text-white" : ""
-        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem]`}
+          editor.isActive("orderedList")
+            ? "bg-black dark:bg-white text-white dark:text-black "
+            : "dark:text-white"
+        } w-10 h-10 rounded-md flex items-center justify-center text-[1rem] `}
       >
         <GoListOrdered />
       </button>
