@@ -20,6 +20,8 @@ export const registerUser = async (req, res) => {
       password,
     });
 
+    generateJWT(user,res);
+
     res.status(201).send({
       success: true,
       message: "User registered successfully",
@@ -54,20 +56,12 @@ export const loginUser = async (req, res) => {
       return res.status(400).send("invalid credentials");
     }
 
-    const token = generateJWT(user);
-
-    // Store the JWT in a cookie
-    res.cookie("jwt", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      expires: new Date(Date.now() + 3600000),
-    });
+    const token = generateJWT(user,res);
 
     res.status(200).send({
       success: true,
       message: "Login successful",
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { id: user._id, name: user.name, email: user.email }
     });
   } catch (error) {
     res.status(500).send(error.message);
@@ -103,7 +97,6 @@ export const updateUser = async (req, res) => {
 
     if (req.body.name) user.name = req.body.name;
     if (req.body.email) user.email = req.body.email;
-    if (req.body.authorBio) user.authorBio = req.body.authorBio;
     if (typeof req.body.isAuthor === "boolean")
       user.isAuthor = req.body.isAuthor;
 
