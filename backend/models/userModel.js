@@ -33,14 +33,17 @@ const userSchema = new mongoose.Schema(
       },
       links: [
         {
-          label: {
-            type: String,
-            required: false,
-          },
-          url: {
-            type: String,
-            required: false,
-            match: /^https?:\/\/(www\.)?[\w\-]+\.[a-z]{2,6}(\/[\w\-]*)*\/?$/i,
+          type: String,
+          validate: {
+            validator: function (v) {
+              return (
+                v.trim() !== "" &&
+                /^https?:\/\/(www\.)?[\w\-]+\.[a-z]{2,6}(\/[\w\-]*)*\/?$/i.test(
+                  v
+                )
+              );
+            },
+            message: (props) => `${props.value} is not a valid URL!`,
           },
         },
       ],
