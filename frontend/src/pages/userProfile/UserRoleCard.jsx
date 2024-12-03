@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useUpdateUserMutation } from "../../api/apiUser";
+import { Link } from "react-router-dom";
 import MiniLoader from "../../components/MiniLoader";
 const UserRoleCard = ({ email, isAuthor, name }) => {
   const [isAuthorUi, setIsAuthorUi] = useState(isAuthor);
@@ -37,7 +38,7 @@ const UserRoleCard = ({ email, isAuthor, name }) => {
               <MiniLoader />
             </>
           ) : isAuthorUi ? (
-            "Update Author Bio"
+            <Link to="/update-author">Update Author Bio</Link>
           ) : (
             "Become an Author"
           )}
