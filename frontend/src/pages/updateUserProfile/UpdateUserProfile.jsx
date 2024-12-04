@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../features/auth/authSlice";
 import { useUpdateUserMutation } from "../../api/apiUser";
 import MiniLoader from "../../components/MiniLoader";
+import toast from "react-hot-toast";
 
 const UpdateUserProfile = () => {
   const user = useSelector((store) => store.auth.userInfo);
@@ -17,8 +18,9 @@ const UpdateUserProfile = () => {
     try {
       const res = await updateUser({ name: newName }).unwrap();
       dispatch(setCredentials({ ...user, name: res.name }));
+      toast.success("user name updated successfully");
     } catch (error) {
-      console.error(error);
+      toast.error(error.data.message || "something went wrong");
     }
   };
 
