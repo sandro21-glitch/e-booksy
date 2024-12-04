@@ -10,12 +10,12 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
 import UpdateUserProfile from "./pages/updateUserProfile/UpdateUserProfile";
 import UpdateAuthorBio from "./pages/updateAuthorBio/UpdateAuthorBio";
-import { useJwt } from "react-jwt";
 import { useLogoutUserMutation } from "./api/apiAuth";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
-  
+
   useEffect(() => {
     const root = window.document.documentElement;
     const body = window.document.body;
@@ -78,6 +78,26 @@ const App = () => {
           }
         />
       </Routes>
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px", zIndex: "9999999" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "white",
+            color: "black",
+          },
+        }}
+      />
     </Router>
   );
 };
