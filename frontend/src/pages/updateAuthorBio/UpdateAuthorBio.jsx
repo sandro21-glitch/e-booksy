@@ -5,6 +5,7 @@ import { useGetUserQuery, useUpdateAuthorBioMutation } from "../../api/apiUser";
 import AuthorLinks from "./AuthorLinks";
 import Loader from "../../components/Loader";
 import AddNewLinkBtn from "./AddNewLinkBtn";
+import toast from "react-hot-toast";
 const UpdateAuthorBio = () => {
   const { name } = useSelector((store) => store.auth.userInfo);
   const { data: user, isLoading: userLoading } = useGetUserQuery();
@@ -22,15 +23,16 @@ const UpdateAuthorBio = () => {
   }, [user]);
 
   const handleUpdateAuthorBio = async () => {
-    if (linkArr.length === 0 && content === "") return;
+    if (linkArr.length === 0 && content === "")
+      return toast.error("No content");
     try {
       const res = await updateAuthorBio({
         bio: content,
         link: linkArr,
       }).unwrap();
-      console.log(res);
+      toast.success(res.message);
     } catch (error) {
-      alert(error.data.message);
+      toast.error(error.data.message);
     }
   };
 
@@ -47,17 +49,13 @@ const UpdateAuthorBio = () => {
   if (userLoading) {
     return (
       <div className="flex justify-center items-center mt-10">
-        Loading user data... <Loader />
+        <Loader />
       </div>
     );
   }
 
   return (
     <section className="flex items-start justify-center section-center section-x min-h-screen">
-      {/* <div
-        className="mt-6 w-full dark:text-white text-[.9rem]"
-        dangerouslySetInnerHTML={{ __html: user.authorBio.bio }}
-      /> */}
       <div className="flex flex-col items-start w-full">
         <p className="text-left w-full dark:text-white text-[.9rem] mb-10">
           Name: <span className="font-bold">{name}</span>
@@ -76,7 +74,7 @@ const UpdateAuthorBio = () => {
               handleLinkChange={handleLinkChange}
             />
           ))}
-        <AddNewLinkBtn handleAddNewLink={handleAddNewLink} />
+          <AddNewLinkBtn handleAddNewLink={handleAddNewLink} />
         </div>
         <button
           onClick={handleUpdateAuthorBio}
