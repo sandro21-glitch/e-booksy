@@ -10,7 +10,6 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnauthenticatedRoute";
 import UpdateUserProfile from "./pages/updateUserProfile/UpdateUserProfile";
 import UpdateAuthorBio from "./pages/updateAuthorBio/UpdateAuthorBio";
-import { useLogoutUserMutation } from "./api/apiAuth";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
